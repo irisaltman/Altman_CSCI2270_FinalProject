@@ -32,22 +32,25 @@ class BookTree
 		// Constructer
 		BookTree();
 		// method to order tree by title
-		void addBookbyTitle(std::string title, std::string author, std::string genre, /*int rank,*/ int pubyr);
+		void addBookbyTitle(std::string title, std::string author, std::string genre, int rank, int pubyr);
 		// method to order tree by year
-		void addBookbyYear(std::string title, std::string author, std::string genre, /*int rank,*/ int pubyr);
+		void addBookbyYear(std::string title, std::string author, std::string genre, int rank, int pubyr);
 		// method to add rank
 		void updateRank(std::string title, int newrank);
 		// method to search for title
 		void searchBook(std::string title);
 		// method to print all books by same author
-		void printBooksbyAuthor(BookNode *node, std::string in_author);
+		void printBooksbyAuthor(std::string in_author);
 		// method to print all books
-		void printAllBooks(BookNode *node);
+		void printAllBooks();
+		// method to print all books of a certain genre
+		void printGenre(std::string genre);
 		// method to print all books made before certain year
-		void printBooksBefore(BookNode *node, int year);
+		void printBooksBefore(int year);
 		// method to print all books made after a certain year
-		void printBooksAfter(BookNode *node, int year);
-		// method to print books in order by rank
+		void printBooksAfter(int year);
+		// method to print books in order by rank using an array
+		
 		// method to delete a book
 		void deleteBook(std::string title);
 		// method to count books
@@ -56,8 +59,12 @@ class BookTree
 	private:
 		BookNode *root;
 		BookNode* searchTree(BookNode *node, std::string title); // private search method to help the public ones
-		// method to count books private helper
-		int countBookNodes(BookNode *node);
+		int countBookNodes(BookNode *node); // count helper
+		void printAllBooks(BookNode *node); // print helper
+		void printBooksbyAuthor(BookNode *node, std::string in_author); // print books by author helper
+		void printBooksBefore(BookNode *node, int year); // helpler to print before a year
+		void printBooksAfter(BookNode *node, int year); // helper to print after a year
+		void printGenre(BookNode *node, std::string genre); // helper to print genre 
 	
 };
 

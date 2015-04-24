@@ -5,13 +5,15 @@
 #include "BookTree.h"
 using namespace std;
 
+// Constructor 
 BookTree::BookTree()
 {
 	root=NULL;
 	count=1;
 }
 
-void BookTree::addBookbyTitle(string title, string author, string genre, /*int rank,*/ int pubyr)
+// Create tree ordered by title
+void BookTree::addBookbyTitle(string title, string author, string genre, int rank, int pubyr)
 {
 	BookNode *newBook = new BookNode(title, author, pubyr, genre);
 	BookNode *x=root;
@@ -39,7 +41,8 @@ void BookTree::addBookbyTitle(string title, string author, string genre, /*int r
 	return;
 }
 
-void BookTree::addBookbyYear(string title, string author, string genre, /*int rank,*/ int pubyr)
+// Create tree ordered by publishing year
+void BookTree::addBookbyYear(string title, string author, string genre, int rank, int pubyr)
 {
 	BookNode *newBook = new BookNode(title, author, pubyr, genre);
 	BookNode *x=root;
@@ -67,6 +70,7 @@ void BookTree::addBookbyYear(string title, string author, string genre, /*int ra
 	return;
 }
 
+// Print entire inventory 
 void BookTree::printAllBooks(BookNode *node)
 {
 	if(node->left!=NULL)
@@ -78,6 +82,13 @@ void BookTree::printAllBooks(BookNode *node)
 	
 }
 
+void BookTree::printAllBooks()
+{
+	printAllBooks(root);
+	return;
+}
+
+// Print all books by one author
 void BookTree::printBooksbyAuthor(BookNode *node, string in_author)
 {
 	cout<<"Searching for author: "<<in_author<<endl;
@@ -90,6 +101,13 @@ void BookTree::printBooksbyAuthor(BookNode *node, string in_author)
 	return;
 }
 
+void BookTree::printBooksbyAuthor(string in_author)
+{
+	printBooksbyAuthor(root, in_author);
+	return;
+}
+
+// Print books pulished before a given year
 void BookTree::printBooksBefore(BookNode *node, int year)
 {
 	cout<<"Searching for books before year: "<<year<<endl;
@@ -102,6 +120,13 @@ void BookTree::printBooksBefore(BookNode *node, int year)
 	return;
 }
 
+void BookTree::printBooksBefore(int year)
+{
+	printBooksBefore(root, year);
+	return;
+}
+
+// Print books published after a given year
 void BookTree::printBooksAfter(BookNode *node, int year)
 {
 	cout<<"Searching for books after year: "<<year<<endl;
@@ -114,6 +139,33 @@ void BookTree::printBooksAfter(BookNode *node, int year)
 	return;
 }
 
+void BookTree::printBooksAfter(int year)
+{
+	printBooksAfter(root, year);
+	return; 
+}
+
+// Method to print all books of one genre
+void BookTree::printGenre(BookNode *node, string genre)
+{
+	cout<<"Searching for all "<<genre<<" books."<<endl;
+	if(node->left!=NULL)
+		printGenre(node->left, genre);
+	if(node->genre==genre)
+		cout<<"Title: "<<node->title<<" by "<<node->author<<endl;
+	if(node->right!=NULL)
+		printGenre(node->right, genre);
+	return;
+
+}
+
+void BookTree::printGenre(string genre)
+{
+	printGenre(root, genre);
+	return;
+}
+
+// Method to find and print a book's info
 void BookTree::searchBook(string title)
 {
 	cout<<"Searching for... "<<title<<endl;
@@ -126,7 +178,7 @@ void BookTree::searchBook(string title)
 		cout<<"Author: "<<bookFound->author<<endl;
 		cout<<"Year of Publication: "<<bookFound->pubyr<<endl;
 		cout<<"Genre: "<<bookFound->genre<<endl;
-		// How do I do rank?
+		cout<<"Rank: "<<bookFound->rank<<endl;
 	}
 	else
 		cout<<"Sorry, book not found. Try another title."<<endl;
@@ -150,12 +202,15 @@ BookNode* BookTree::searchTree(BookNode *node, string title)
 	}
 }
 
+
+// Method to count the number of nodes
 int BookTree::countBooks()
 {
 	int num_books=countBookNodes(root);
 	return num_books;
 }
 
+// Helper to count the books
 int BookTree::countBookNodes(BookNode *node)
 {
 	if(node==NULL)
@@ -164,6 +219,7 @@ int BookTree::countBookNodes(BookNode *node)
 		return countBookNodes(node->left)+countBookNodes(node->right)+1;
 }
 
+// Method to delete one book node given by user
 void BookTree::deleteBook(string title)
 {
 	BookNode *foundBook=searchTree(root, title);
@@ -223,4 +279,13 @@ void BookTree::deleteBook(string title)
 	}
 	else
 		cout<<"Book not found."<<endl;
+}
+
+
+// method for the user to change a ranking from 1-5
+void BookTree::updateRank(string title, int newrank)
+{
+	BookNode *updateBook = searchTree(root, title);
+	updateBook->rank=newrank;
+	return;
 }
