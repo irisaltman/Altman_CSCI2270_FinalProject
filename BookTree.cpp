@@ -12,7 +12,19 @@ BookTree::BookTree()
 	count=1;
 }
 
-// Create tree ordered by title
+/* Function prototype: 
+  void BookTree::addBookbyTitle(string,string,string,int,int)
+ 
+  Function description:
+  This function adds a new node to the binary search tree. The node is sorted by its title alphabetically.
+  
+  Example:
+  BookTree bt;
+  bt->addBookbyTitle("Inkheart","Cornelia Funke","fiction",3,2003);
+  
+  Precondition: unused nodes are NULL, a tree has been established, the parameters are in order: title, author, genre, rank, and pubication year
+  Postcondition: the new node has been added to the tree according to title
+  */
 void BookTree::addBookbyTitle(string title, string author, string genre, int rank, int pubyr)
 {
 	BookNode *newBook = new BookNode(title, author, pubyr, genre);
@@ -40,8 +52,19 @@ void BookTree::addBookbyTitle(string title, string author, string genre, int ran
 	}
 	return;
 }
-
-// Create tree ordered by publishing year
+/*Function prototype: 
+  void BookTree::addBookbyYearstring,string,string,int,int)
+ 
+  Function description:
+  This function adds a new node to the binary search tree. The node is sorted by its publication year.
+  
+  Example:
+  BookTree bt;
+  bt->addBookbyYear("Inkheart","Cornelia Funke","fiction",3,2003);
+  
+  Precondition: unused nodes are NULL, a tree has been established, the parameters are in order: title, author, genre, rank, and pubication year
+  Postcondition: the new node has been added to the tree according to year
+  */
 void BookTree::addBookbyYear(string title, string author, string genre, int rank, int pubyr)
 {
 	BookNode *newBook = new BookNode(title, author, pubyr, genre);
@@ -70,7 +93,19 @@ void BookTree::addBookbyYear(string title, string author, string genre, int rank
 	return;
 }
 
-// Print entire inventory 
+/*Function prototype: 
+  void BookTree::printAllBooks(BookNode*)
+ 
+  Function description:
+  This function displays all of the books in the tree. It uses recursion to implement in-order traversal.
+  
+  Example:
+  BookTree bt;
+  bt->printAllBooks(root);
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a list of the books and their authors should be displayed 
+  */ 
 void BookTree::printAllBooks(BookNode *node)
 {
 	if(node->left!=NULL)
@@ -82,13 +117,14 @@ void BookTree::printAllBooks(BookNode *node)
 	
 }
 
+// This is the public method to help the previous method in the driver
 void BookTree::printAllBooks()
 {
 	printAllBooks(root);
 	return;
 }
 
-// Print all books by one author
+// Print all books by one author (private helper method)
 void BookTree::printBooksbyAuthor(BookNode *node, string in_author)
 {
 	cout<<"Searching for author: "<<in_author<<endl;
@@ -101,13 +137,26 @@ void BookTree::printBooksbyAuthor(BookNode *node, string in_author)
 	return;
 }
 
+/*Function prototype: 
+  void BookTree::printBooksbyAuthor(string)
+ 
+  Function description:
+  This function displayes all books by a given author. If the author is not found, it will not print.
+  
+  Example:
+  BookTree bt;
+  bt->printBooksbyAuthor("Cornelia Funke");
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a list of the books and their authors should be displayed 
+  */ 
 void BookTree::printBooksbyAuthor(string in_author)
 {
 	printBooksbyAuthor(root, in_author);
 	return;
 }
 
-// Print books pulished before a given year
+// Print books pulished before a given year (private helper method)
 void BookTree::printBooksBefore(BookNode *node, int year)
 {
 	cout<<"Searching for books before year: "<<year<<endl;
@@ -120,13 +169,26 @@ void BookTree::printBooksBefore(BookNode *node, int year)
 	return;
 }
 
+/*Function prototype: 
+  void BookTree::printBooksBefore(int)
+ 
+  Function description:
+  This function displays all of the books in the tree that were published before a given year. The year is the parameter given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->printBooksBefore(2003);
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a list of the books and their authors should be displayed 
+  */ 
 void BookTree::printBooksBefore(int year)
 {
 	printBooksBefore(root, year);
 	return;
 }
 
-// Print books published after a given year
+// Print books published after a given year (private helper method)
 void BookTree::printBooksAfter(BookNode *node, int year)
 {
 	cout<<"Searching for books after year: "<<year<<endl;
@@ -139,13 +201,26 @@ void BookTree::printBooksAfter(BookNode *node, int year)
 	return;
 }
 
+/*Function prototype: 
+  void BookTree::printBooksAfter(int)
+ 
+  Function description:
+  This function displays all of the books in the tree that were published after a given year. The year is the parameter given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->printBooksAfter(2003);
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a list of the books and their authors should be displayed 
+  */ 
 void BookTree::printBooksAfter(int year)
 {
 	printBooksAfter(root, year);
 	return; 
 }
 
-// Method to print all books of one genre
+// Method to print all books of one genre (private helper method)
 void BookTree::printGenre(BookNode *node, string genre)
 {
 	cout<<"Searching for all "<<genre<<" books."<<endl;
@@ -159,13 +234,38 @@ void BookTree::printGenre(BookNode *node, string genre)
 
 }
 
+/*Function prototype: 
+  void BookTree::printGenre(string)
+ 
+  Function description:
+  This function displays all of the books in the tree of a certain genre. The genre is the parameter given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->printGenre("fiction");
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a list of the books and their authors should be displayed 
+  */ 
 void BookTree::printGenre(string genre)
 {
 	printGenre(root, genre);
 	return;
 }
 
-// Method to find and print a book's info
+/*Function prototype: 
+  void BookTree::searchBook(string)
+ 
+  Function description:
+  This function searches the tree for a title and prints that book's information. The title is the parameter given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->searchBook("Inkheart");
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, the book's information should be displayed 
+  */ 
 void BookTree::searchBook(string title)
 {
 	cout<<"Searching for... "<<title<<endl;
@@ -203,14 +303,26 @@ BookNode* BookTree::searchTree(BookNode *node, string title)
 }
 
 
-// Method to count the number of nodes
+/*Function prototype: 
+  void BookTree::countBooks()
+ 
+  Function description:
+  This function counts how many nodes are in the binary search tree.
+  
+  Example:
+  BookTree bt;
+  bt->countBooks();
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, a number should be displayed, being the number of nodes found in the tree 
+  */ 
 int BookTree::countBooks()
 {
 	int num_books=countBookNodes(root);
 	return num_books;
 }
 
-// Helper to count the books
+// Helper to count the books (private)
 int BookTree::countBookNodes(BookNode *node)
 {
 	if(node==NULL)
@@ -219,7 +331,19 @@ int BookTree::countBookNodes(BookNode *node)
 		return countBookNodes(node->left)+countBookNodes(node->right)+1;
 }
 
-// Method to delete one book node given by user
+/*Function prototype: 
+  void BookTree::deleteBook(string)
+ 
+  Function description:
+  This function deletes a specific book from the tree. The title to be deleted is the parameter given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->deleteBook("Inkheart");
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: Nothing is printed, the tree should now contain one less node (check with count method) 
+  */ 
 void BookTree::deleteBook(string title)
 {
 	BookNode *foundBook=searchTree(root, title);
@@ -282,7 +406,19 @@ void BookTree::deleteBook(string title)
 }
 
 
-// method for the user to change a ranking from 1-5
+/*Function prototype: 
+  void BookTree::updateRank(string,int)
+ 
+  Function description:
+  This function changes the rank of a specific book in the tree. The title and new ranking are the parameters given by the user.
+  
+  Example:
+  BookTree bt;
+  bt->updateRank("Inkheart",5);
+  
+  Precondition: unused nodes are NULL, a tree has been established
+  Postcondition: nothing is returned, the rank of the book should now be changed (check with the searchBook method)
+  */ 
 void BookTree::updateRank(string title, int newrank)
 {
 	BookNode *updateBook = searchTree(root, title);
