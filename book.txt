@@ -1,0 +1,24 @@
+Douglas Adams,The Hitchhiker's Guide To The Galaxy,1979,fiction,5
+Richard Adams,Watership Down,1972,fiction,3
+Mitch Albom,The Five People You Meet in Heaven,2003,fiction,4
+Laurie Halse Anderson,Speak,1999,nonfiction,2
+Maya Angelou,I Know Why the Caged Bird Sings,1969,fiction,5
+Jay Asher,Thirteen Reasons Why,2007,nonfiction,4
+Isaac Asimov,Foundation Series,1966,nonfiction,3
+Ann Brashares,The Sisterhood of the Traveling Pants,2001,ficiton,1
+Libba Bray,A Great and Terrible Beauty,2004,nonfiction,0
+Dan Brown,The Da Vinci Code,2002,fiction,5
+Meg Cabot,The Princess Diaries,2000,fiction,0
+Orson Scott Card,Ender's Game,1985,fiction,4
+Tom Clancy,The Hunt for Red October,1984,nonfiction,2
+Suzanne Collins,The Hunger Games,2008,fiction,4
+F. Scott Fitzgerald,The Great Gatsby,1925,fiction,1
+Cornelia Funke,Inkheart,2003,fiction,5
+William Gibson,Neuromancer,1984,nonfiction,0
+William Golding,Lord of the Flies,1954,fiction,3
+William Goldman,The Princess Bride,1973,fiction,5
+James Gurney,Dinotopia: A Land Apart from Time,1992,nonfiction,1
+Will Hobbs,Far North,2009,nonfiction,2
+Alice Hoffman,Practical Magic,1995,fiction,3
+Aldous Huxley,Brave New World,1932,fiction,5
+
