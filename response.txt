@@ -1,0 +1,21 @@
+bug: reading in from a text file. last getline function should read till it reads in a newline, not the ","(comma)
+Fix: change getline(file, ranking, ','); to getline(file, ranking, '\n');
+
+bug: when BookNodes of the tree were initialized, rank of each BookNode was not set
+Fix: add newBook->rank = rank; in addBookbyTitle function
+
+bug: number of BookNodes in the tree. value of count is initialized to 1 instead of 0
+Fix: change count = 1; to count = 0; in the constructor
+
+bug: parent of the root node must be null
+Fix: add root->parent = NULL; at appropriate position in both addBookbyTitle and addBookbyYear functions
+
+enhancement: printing special message if the tree is empty in printAllBooks function 
+
+enhancement: 
+void BookTree::printBooksOrderedByRank();
+void BookTree::printBooksOrderedByRank(BookNode *node, vector<BookNode *> &v);
+void BookTree::sortList(vector<BookNode *> &v);
+void BookTree::printList(vector<BookNode *> &v);
+
+are added to print the books in order by their rankings
